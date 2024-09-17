@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>강아지 상 닮은꼴</title>
+        <link>http://slowbut.com/dogs/</link>
+        <description>나는 어떤 강아지 종을 닮았을까?</description>
+        <language>ko</language>
+    </channel>
+    <item>
+        <title>강아지 상 닮은꼴</title>
+        <link>http://slowbut.com/dogs/</link>
+        <description>나는 어떤 강아지 종을 닮았을까?</description>
+        <author>slow-but</author>
+    </item>
+    <channel>
+            <title>AI Drawing</title>
+            <link>http://slowbut.com/chats/drawing</link>
+            <description>AI Drawing</description>
+            <language>ko</language>
+        </channel>
+        <item>
+            <title>강아지 상 닮은꼴</title>
+            <link>http://slowbut.com/chats/drawing</link>
+            <description>AI Drawing</description>
+            <author>slow-but</author>
+        </item>
+</rss>

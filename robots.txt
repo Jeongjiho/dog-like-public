@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /dogs/
+Allow: /chats/drawing
+Disallow: /cats/
+Disallow: /favicon/
+Disallow: /img/
+Disallow: /css/
+Disallow: /js/
+Sitemap: http://slowbut.com/sitemap.xml

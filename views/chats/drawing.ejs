@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="sZtLcSJB30-ttwJP2LbxJwUCPoiB_Bdw0kPgsFPEOnA" />
+    <meta name="google-site-verification" content="qggKpFbHmCd8nb_2mw8f2WmYarIw7tJQT27Dz7ICA9U" />
+    <meta name="naver-site-verification" content="b79f9ca921f4d1c2584ad42e0756fb38c0fc253d" />
+    <meta property="og:url"  content="http://www.slowbut.com/chats/drawing" />
+    <meta property="og:type"  content="website" />
+    <meta property="og:image" content="/img/ai-face.png" />
+    <link rel="shortcut icon" href="/favicon/ai-face-favicon.png">
+    <meta property="og:title" content="AI Drawing"/>
+    <meta property="og:description" content="AI Drawing"/>
+    <meta name="description" content="AI Drawing">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>AI Drawing</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="drawing-body">
+
+<section class="mb-10per section">
+    <div class="container container-custom">
+
+        <div class="pt-10">
+
+            <div id="chooseSection" class="mt-10per">
+                <div class="mb-5">
+                    <p class="sub-title">문장을 입력하면 AI가 그려줍니다.</p>
+                </div>
+
+                <div class="text-container">
+                    <div class="form-group mb-5">
+                        <input type="text" class="form-control" id="text" placeholder="100자 이내로 입력해주세요." maxlength="100" autocomplete="off"/>
+                    </div>
+
+                    <div id="inputArea" class="mb-5">
+                        <button id="btnDrawing" type="button" class="btn btn-outline-primary btn-lg w-100">
+                            그림을 그려줘
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                    </div>
+
+                    <div id="resultArea" class="mb-5">
+
+                    </div>
+
+                    <div>
+                        <ins class="kakao_ad_area" style="display:none;"
+                             data-ad-unit    = "DAN-jgeb1vgKkZcyFdcw"
+                             data-ad-width   = "320"
+                             data-ad-height  = "100"></ins>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6F094V20W6"></script>
+<script async src="/js/browser.js"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-6F094V20W6');
+</script>
+
+<script type="text/javascript">
+
+    $(function() {
+        const drawing = new Drawing();
+        drawing.init();
+    });
+
+    class Drawing {
+
+        constructor() {
+        }
+
+        init = () => {
+            this.#bind();
+        }
+
+        #bind = () => {
+            $("#btnDrawing").on('click', () => {
+                this.#callDrawing();
+            });
+        }
+
+        #validation = () => {
+            if(!$("#text").val().trim()) {
+                alert('글을 입력해주세요.');
+                $("#text").focus();
+                return false;
+            }
+            return true;
+        }
+
+        #callDrawing = () => {
+
+            if(!this.#validation()) {
+                return false;
+            }
+
+            const text = $("#text").val().trim();
+
+            $.ajax({
+                url: '/chats/image',
+                type: 'POST',
+                data: {
+                    msg: text
+                },
+                beforeSend: () => {
+                    this.#displayLoading();
+                },
+                complete: () => {
+                    this.#removeLoading();
+                },
+                success: (res) => {
+                    const resultArr = res.result.sort(() => 0.5 - Math.random());
+                    this.#displayResult(resultArr[0].url);
+                },
+                error: () => {
+                    alert('에러가 발생했습니다. 다시 시도해주세요.');
+                }
+            });
+
+        }
+
+        #displayLoading = () => {
+            $("body").append(`
+                <div id="loading" class="loading-wrap d-flex flex-column">
+                    <div class="spinner-grow text-light" style="width: 10rem; height: 10rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="loading-text"><strong>Loading...</strong></div>
+                </div>
+            `);
+        }
+
+        #removeLoading = () => {
+            $("#loading").remove();
+        }
+
+        #displayResult = (imageUrl) => {
+
+            if(!imageUrl) {
+                alert('AI의 그림 데이터가 없습니다. 다시 시도해주세요');
+                return false;
+            }
+
+            $("#resultArea").empty();
+            $("#resultArea").html(`<img src="${imageUrl}" class="w-100"/>`);
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

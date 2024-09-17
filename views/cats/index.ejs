@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="sZtLcSJB30-ttwJP2LbxJwUCPoiB_Bdw0kPgsFPEOnA" />
+    <meta name="google-site-verification" content="qggKpFbHmCd8nb_2mw8f2WmYarIw7tJQT27Dz7ICA9U" />
+    <meta name="naver-site-verification" content="b79f9ca921f4d1c2584ad42e0756fb38c0fc253d" />
+    <meta property="og:url"  content="http://www.slowbut.com/cats/" />
+    <meta property="og:type"  content="website" />
+    <meta property="og:image" content="/img/cats-open.png" />
+    <meta property="og:title" content="고양이상 닮은꼴"/>
+    <meta property="og:description" content="나는 어떤 고양이 상을 닮았을까?"/>
+    <meta name="description" content="나는 어떤 강아지 상을 닮았을까? 이미지를 올려 확인해보세요.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>고양이상 닮은꼴</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<section class="mb-10per section">
+    <div class="container container-custom">
+
+        <div class="pt-10">
+
+            <div id="chooseSection" class="mt-10per">
+                <div class="mb-5">
+                    <p class="title">나와 닮은 고양이는?</p>
+                </div>
+
+                <div class="text-center">
+                    <img src="/img/open.png" alt="main image" style="width: 40vw;"/>
+                </div>
+
+                <div class="container file-upload">
+                    <div class="image-upload-wrap mb-5">
+                        <input id="imageFile" class="file-upload-input" type="file" name="file" accept="image/*"/>
+                        <div class="drag-text">
+                            <div class="pt-5">
+                                <i class="bi bi-card-image display-1"></i>
+                            </div>
+                            <h3 class="mb-5 pb-5 pt-4  upload-text">
+                                사진을 올려놓거나<br/>
+                                눌러서 업로드하세요!
+                            </h3>
+                        </div>
+                    </div>
+                    <div>
+                        <ins class="kakao_ad_area" style="display:none;"
+                             data-ad-unit    = "DAN-jgeb1vgKkZcyFdcw"
+                             data-ad-width   = "320"
+                             data-ad-height  = "100"></ins>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultSection" class="hide">
+                <div class="file-upload-content">
+                    <div>
+                        <div class="text-center">
+                            <img class="mb-4" id="viewUploadImage" src="" alt="your image" style="min-width: 35%; width: 35%; max-width: 35%;"/>
+                        </div>
+                        <div class="text-center">
+                            <img src="" id="resultImage" class="placeholder" alt="main image" style="min-width: 35%; width: 35%; max-width: 35%;"/>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <hr style="display: inline-block; width: 15vw;"/>
+                        <span id="resultText" class="display-2 fw-bold"></span>
+                        <hr style="display: inline-block; width: 15vw;"/>
+                    </div>
+                </div>
+                <div class="mt-5 px-5">
+                    <span id="resultDescription" class="display-6 subtitle"></span>
+                </div>
+
+                <div class="file-upload-content">
+                    <div class="mt-3">
+                        <button id="btnReplay" type="button" class="btn btn-outline-primary btn-lg">
+                            <i class="bi bi-arrow-clockwise"></i>
+                            재시도
+                        </button>
+                    </div>
+                </div>
+
+                <div id="resultAd" class="text-center mt-5">
+                    <ins class="kakao_ad_area" style="display:none;"
+                         data-ad-unit    = "DAN-QVYOSYWfyFtq4isI"
+                         data-ad-width   = "300"
+                         data-ad-height  = "250"></ins>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">도움말</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pb-0">
+                        <!--<div class="arrow"></div>-->
+                        <div class="p-4">
+                            <div class="d-inline-flex justify-content-center">
+                                <img src="/img/help.png" alt="도움말 이미지" style="width: 50%"/>
+                            </div>
+                            <div class="mt-3">
+                                <p class="h5">
+                                    # 고양이상 닮은꼴 찾기를 이용해주셔서 감사합니다.
+                                </p>
+                                <p class="h5">
+                                    # 얼굴 정면 사진을 올려주시는게 정확합니다.
+                                </p>
+                                <p class="h5">
+                                    # 여러 사진을 올려 확인해보세요!
+                                </p>
+                            </div>
+                        </div>
+                        <ins class="kakao_ad_area" style="display:none;"
+                             data-ad-unit    = "DAN-hPRcGkeit0kA534P"
+                             data-ad-width   = "320"
+                             data-ad-height  = "50"></ins>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="text-center text-white position-relative">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © SlowBut 2022. All Rights Reserved.
+    </div>
+</footer>
+
+
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6F094V20W6"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-6F094V20W6');
+</script>
+
+
+<script type="text/javascript">
+
+    $(function() {
+        cats.init();
+    });
+
+    const description = {
+        "러시안 블루": "러시안블루를 닮은 당신, 온순한 성격에 조용하며 신중하나 때로는 호기심이 많아 대범한 모습도 있는 성격이시군요?",
+        "아메리칸 숏헤어": "아메리칸숏헤어를 닮은 당신, 애교가 굉장히 많으며 독점욕도 강하면서 때로는 외로움을 많이 타는 성격이시군요?",
+        "페르시안": "페르시안을 닮은 당신, 순한편이며 혼자 있는것을 좋아하며 때로는 누군가를 관촬하는것을 좋아하는 성격이시군요?",
+        "노르웨이 숲": "노르쉐이 숲을 닮은 당신, 그 누구보다 우아하면서 평소에는 조용하지만 애교가 많으며 야외활동을 좋아하는 성격이시군요?",
+        "먼치킨": "먼치킨을 닮은 상신, 사람을 좋아하며 장난기도 많고 사교적인 성격이시군요?",
+        "브리티쉬 숏헤어": "브리티숏헤어를 닮은 당신, 조용하며 인내심이 강하며 평화로움을 추구하는 성격이시군요?",
+        "호랑이": "호랑이를 닮은 당신, 강인함을 가졌으며 친구들에게 의리있는 성격이시군요?",
+        "아메리칸 컬": "아메리칸 컬을 닮은 당신, 장난기가 다분하며 강아지 같은 성격의 개냥이시군요?",
+        "삵": "삵을 닮은 당신, 성격이 괴팍하고 무섭지만 주변 사람들은 잘 챙기는 성격이시군요?",
+        "길냥이": "길냥이를 닮은 당신, 식욕이 왕성하고 사람들을 좋아하는 성격으로 주변에 한 명씩 있을 것 같은 친구이시군요?",
+        "나옹이": "나옹이를 닮은 당신, 무슨 일을 하더라도 같은 팀과 끈끈한 우정을 나누는 성격이시군요?",
+        "검은고양이": "검은고양이를 닮은 당신, 수줍음이 많아 친구들이 먼저 다가와주길 바라는 성격이군요?",
+    }
+
+    const cats = {
+
+        data: {
+            model: ''
+        },
+
+        init: () => {
+            cats.showHelp();
+            cats.bind();
+        },
+
+        bind: () => {
+
+            $('#imageFile').on('change', () => {
+                cats.displayLoading();
+
+                if ($('#imageFile').prop('files') && $('#imageFile').prop('files')[0]) {
+                    try {
+                        cats.uploadFile();
+                    }
+                    catch (e) {
+                        console.error(e);
+                    }
+                    const reader = new FileReader();
+                    reader.onload = async function(e) {
+                        $('#viewUploadImage').attr('src', String(e.target.result));
+                        await cats.predict();
+                    };
+                    reader.readAsDataURL($('#imageFile').prop('files')[0]);
+                }
+            });
+
+            $('#btnReplay').on('click', () => {
+                location.reload();
+            });
+
+        },
+
+        showHelp: () => {
+            let helpModal = new bootstrap.Modal(document.getElementById('helpModal'));
+            helpModal.show();
+        },
+
+        uploadFile: () => {
+
+            const formData = new FormData();
+            formData.append('file', $('#imageFile').prop('files')[0]);
+            formData.append('serviceType', 'CAT');
+
+            $.ajax({
+                url: '/files/upload',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false
+            }).done(function(data){
+            });
+
+        },
+
+        teachableMachineInit: async () => {
+            const URL = "https://teachablemachine.withgoogle.com/models/JfH-aUgvO/";
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+            cats.data.model = await tmImage.load(modelURL, metadataURL);
+            cats.removeLoading();
+        },
+
+        predict: async () => {
+            await cats.teachableMachineInit();
+            const image = $("#viewUploadImage").get(0);
+            const prediction = await cats.data.model.predict(image, false);
+
+            let maxIndex = -1;
+            let maxValue = -1;
+            let resultTxt = '';
+            for (let i = 0; i < cats.data.model.getTotalClasses(); i++) {
+
+                if(maxValue < prediction[i].probability) {
+                    maxValue = prediction[i].probability;
+                    maxIndex = i;
+                }
+
+                resultTxt +=
+                    prediction[i].className + " : " + prediction[i].probability.toFixed(2) + "<br/>";
+            }
+
+            $('#resultText').text(`${prediction[maxIndex].className}(${prediction[maxIndex].probability.toFixed(2) * 100}%)`);
+            $("#resultDescription").html(description[prediction[maxIndex].className]);
+            $("#resultImage").attr('src', `/img/cats/${prediction[maxIndex].className}.jpeg`);
+            $("#resultImage").removeClass('placeholder');
+
+            cats.changeSection();
+            cats.removeLoading();
+        },
+
+        changeSection: () => {
+
+            $("#chooseSection").hide();
+            $("#resultSection").show();
+            cats.refreshAdScript();
+        },
+
+        displayLoading: () => {
+
+            $("body").append(`
+                    <div id="loading" class="loading-wrap d-flex flex-column">
+                        <div class="spinner-grow text-light" style="width: 10rem; height: 10rem;" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="loading-text"><strong>Loading...</strong></div>
+                    </div>
+                    `);
+
+        },
+
+        removeLoading: () => {
+            $("#loading").remove();
+        },
+
+        refreshAdScript: () => {
+            const headTag = document.getElementsByTagName("head")[0];
+            const newScript = document.createElement('script');
+            newScript.type = 'text/javascript';
+            newScript.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+            headTag.appendChild(newScript);
+        }
+
+    }
+</script>
+</body>
+</html>
